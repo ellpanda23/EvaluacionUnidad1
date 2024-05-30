@@ -85,25 +85,22 @@ fun LoginScreen(
                     },
                     label = {
                         Text("Contraseña")
-                    },
-                    /*visualTransformation = if(seePass) VisualTransformation.None else PasswordVisualTransformation(),
-                    trailingIcon = {
-                        IconButton(onClick = { seePass = !seePass }) {
-                            Icon(
-                                imageVector = if (seePass) Icons.Outlined.Lock else Icons.Outlined.LockOpen,
-                                contentDescription = null
-                            )
-                        }
-                    }*/
+                    }
                 )
                 Button(
                     onClick = {
 
+                        // VALIDA QUE LOS CAMPOS NO ESTEN VACIOS
                         if(viewModel.validate()){
+
+                            // CORUTINA
                             coroutineScope.launch {
+                                // VERIFICA SI EL ACCESO ES CORRECTO
                                 if(viewModel.getAccceso()){
                                     viewModel.updateMatricula("")
                                     viewModel.updatePassword("")
+
+                                    // SI ES CORRECTO EL ACCESO NAVEGA
                                     navController.navigate(AppScreens.AlumnoInfoScreen.route)
 
                                 } else {

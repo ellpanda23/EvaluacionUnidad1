@@ -23,8 +23,6 @@ import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import com.example.inventory.InventoryApplication
 import com.example.inventory.ui.alumno.AlumnoInfoViewModel
-import com.example.inventory.ui.carga.CargaAcademicaViewModel
-import com.example.inventory.ui.home.HomeViewModel
 import com.example.inventory.ui.login.LoginViewModel
 
 /**
@@ -33,17 +31,10 @@ import com.example.inventory.ui.login.LoginViewModel
 object AppViewModelProvider {
     val Factory = viewModelFactory {
 
-        // Initializer for HomeViewModel
-        initializer {
-            HomeViewModel()
-        }
-
         // Initializer for LoginViewModel
         initializer {
             LoginViewModel(
                 inventoryApplication().container.networkSicenetRepository,
-                inventoryApplication().container.offlineSicenetRepository,
-                inventoryApplication()
 
             )
         }
@@ -51,14 +42,6 @@ object AppViewModelProvider {
         initializer {
             AlumnoInfoViewModel(
                 inventoryApplication().container.networkSicenetRepository,
-                inventoryApplication().container.offlineSicenetRepository,
-                inventoryApplication()
-            )
-        }
-        initializer {
-            CargaAcademicaViewModel(
-                inventoryApplication().container.networkSicenetRepository,
-                inventoryApplication().container.offlineSicenetRepository
             )
         }
     }

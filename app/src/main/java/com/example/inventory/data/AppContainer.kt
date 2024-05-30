@@ -29,7 +29,6 @@ import retrofit2.converter.simplexml.SimpleXmlConverterFactory
  */
 interface AppContainer {
     val networkSicenetRepository: SicenetRepository
-    val offlineSicenetRepository: SicenetRepository
 }
 
 /**
@@ -58,9 +57,6 @@ class AppDataContainer(private val context: Context) : AppContainer {
         NetworkSicenetRepository(retrofitService)
     }
 
-    override val offlineSicenetRepository: OfflineSicenetRepository by lazy {
-        OfflineSicenetRepository(SicenetDatabase.getDatabase(context).alumnoDao())
-    }
 }
 
 class CookiesInterceptor: Interceptor {

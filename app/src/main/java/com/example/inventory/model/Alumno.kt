@@ -2,9 +2,9 @@ package com.example.inventory.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-@Entity(tableName = "alumnos")
+
+// DEFINE LA ESTRUCTURA PARA GSON
 data class Alumno(
-    @PrimaryKey(autoGenerate = false)
     var matricula:String = "",
     var nombre:String = "nombre",
     var fechaReins:String = "",

@@ -36,9 +36,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
-import com.example.inventory.LAST_UPDATE
 import com.example.inventory.model.Alumno
 import com.example.inventory.ui.AppViewModelProvider
+import com.example.inventory.ui.navigation.AppScreens
 
 @OptIn(ExperimentalMaterial3Api::class)
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
@@ -46,19 +46,19 @@ import com.example.inventory.ui.AppViewModelProvider
 fun AlumnoInfoScreen(
     navController: NavController,
     viewModel: AlumnoInfoViewModel = viewModel(factory = AppViewModelProvider.Factory)
-){
+) {
 
+    // MANDA A LLAMAR LA FUNCION QUE ESTA EN EL AlumnoViewModel
     var alumno by remember { mutableStateOf(Alumno()) }
     LaunchedEffect(key1 = "GET_ALUMNO") {
+        // OBJETO DE kOTLIN
         alumno = viewModel.getAlumno()
     }
 
+    // CONTENEDOR
     val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior()
     Scaffold (
         modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
-        topBar = {
-            Text(text = LAST_UPDATE.toString())
-        },
         bottomBar = {}
     ) {
         Column(
@@ -80,6 +80,7 @@ fun AlumnoInfoScreen(
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Text(
+                    //CARGA LAS 2 LETRAS DEL NOMBRE EN EL CIRCULO
                     text = alumno.nombre.substring(0,2),
                     color = MaterialTheme.colorScheme.background,
                     fontWeight = FontWeight.Bold,
@@ -89,6 +90,7 @@ fun AlumnoInfoScreen(
 
             Spacer(modifier = Modifier.size(16.dp))
 
+            // CARGA EL NOMBRE DEL ALUMNO
             Text(
                 text = alumno.nombre,
                 fontWeight = FontWeight.Bold,
@@ -134,9 +136,11 @@ fun AlumnoInfoScreen(
             Spacer(modifier = Modifier.size(32.dp))
 
 
+            // BOTON DE CERRA SESION
             Button(
                 onClick = {
-
+                    // NAVEGAR AL LOGIN
+                    navController.navigate(AppScreens.LoginScreen.route)
                 },
                 shape = RoundedCornerShape(8.dp),
                 modifier = Modifier

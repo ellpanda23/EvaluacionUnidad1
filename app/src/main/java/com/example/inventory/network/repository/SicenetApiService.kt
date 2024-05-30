@@ -31,42 +31,4 @@ interface SicenetApiService {
     @GET("ws/wsalumnos.asmx")
     suspend fun getCookies(): ResponseBody
 
-    @Headers(
-        "Content-Type: text/xml",
-        "SOAPAction: \"http://tempuri.org/getAllKardexConPromedioByAlumno\""
-    )
-    @POST("ws/wsalumnos.asmx")
-    suspend fun getKardex(
-        @Body requestBody: RequestBody
-    ): ResponseBody
-
-    @Headers(
-        "Content-Type: text/xml",
-        "SOAPAction: \"http://tempuri.org/getCargaAcademicaByAlumno\""
-    )
-
-    @POST("ws/wsalumnos.asmx")
-    suspend fun getCargaAcademica(
-        @Body requestBody: RequestBody
-    ): ResponseBody
-
-    @Headers(
-        "Content-Type: text/xml",
-        "SOAPAction: \"http://tempuri.org/getAllCalifFinalByAlumnos\""
-    )
-
-    @POST("ws/wsalumnos.asmx")
-    suspend fun getAllCalifFinalByAlumnos(
-        @Body requestBody: RequestBody
-    ): ResponseBody
-
-    @Headers(
-        "Content-Type: text/xml",
-        "SOAPAction: \"http://tempuri.org/getAllCalifFinalByAlumnos\""
-    )
-
-    @POST("ws/wsalumnos.asmx")
-    suspend fun getCalifUnidadesByAlumno(
-        @Body requestBody: RequestBody
-    ): ResponseBody
 }
